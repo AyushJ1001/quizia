@@ -1,8 +1,38 @@
 {
 	"name": "quizia",
+	"version": "0.1.0",
+	"description": "Interactive terminal quiz powered by Ink",
 	"module": "index.ts",
 	"type": "module",
-	"private": true,
+	"license": "MIT",
+	"author": "Ayush Juvekar",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/ayushjuvekar/quizia.git"
+	},
+	"homepage": "https://github.com/ayushjuvekar/quizia#readme",
+	"bugs": {
+		"url": "https://github.com/ayushjuvekar/quizia/issues"
+	},
+	"keywords": [
+		"cli",
+		"quiz",
+		"ink",
+		"react",
+		"terminal"
+	],
+	"engines": {
+		"node": ">=20"
+	},
+	"bin": {
+		"quizia": "dist/cli.mjs"
+	},
+	"files": [
+		"dist"
+	],
+	"publishConfig": {
+		"access": "public"
+	},
 	"devDependencies": {
 		"@types/bun": "latest"
 	},
@@ -16,9 +46,17 @@
 		"ink-gradient": "^3.0.0",
 		"ink-select-input": "^6.2.0",
 		"meow": "^14.0.0",
-		"react": "19.1.1"
+		"react": "19.1.1",
+		"react-devtools-core": "^6.1.5"
 	},
 	"scripts": {
-		"dev": "bun run index.tsx"
+		"dev": "bun run index.tsx",
+		"build:tsc": "bun x tsc -p tsconfig.build.json",
+		"build:copy-data": "mkdir -p dist/data && cp data/*.json dist/data/",
+		"build:shebang": "echo '#!/usr/bin/env node' > dist/cli.mjs",
+		"build:concat": "cat dist/index.js >> dist/cli.mjs",
+		"build:chmod": "chmod +x dist/cli.mjs",
+		"build": "bun run build:tsc && bun run build:copy-data && bun run build:shebang && bun run build:concat && bun run build:chmod",
+		"prepublishOnly": "bun run build"
 	}
 }

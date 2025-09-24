@@ -1,7 +1,8 @@
 import { Box, Text, useApp } from "ink";
 import SelectInput, { type ItemProps } from "ink-select-input";
-
-import ww1 from "../data/ww1.json";
+import { readFileSync } from "node:fs";
+import { fileURLToPath } from "node:url";
+import { dirname, resolve } from "node:path";
 import {
 	useState,
 	useEffect,
@@ -14,6 +15,16 @@ import {
 type CustomItemProps = ItemProps & {
 	isCorrect?: boolean;
 };
+
+// Load quiz data from JSON at runtime to avoid JSON import assertions in Node
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+const ww1Path = resolve(__dirname, "../data/ww1.json");
+const ww1 = JSON.parse(readFileSync(ww1Path, "utf8")) as Array<{
+	question: string;
+	choices: { A: string; B: string; C: string; D: string };
+	correct: "A" | "B" | "C" | "D";
+}>;
 
 function Questions({
 	setScore,
