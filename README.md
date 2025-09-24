@@ -1,15 +1,17 @@
-# quizia
+# Quizia
 
-To install dependencies:
+Quizia is a cool looking quiz game, think of it like Sporcle for the terminal (It's not there yet, but that's the goal).
 
-```bash
-bun install
-```
+## Installation
 
-To run:
+Install globally with
 
 ```bash
-bun run index.ts
+npm i -g quizia
 ```
 
-This project was created using `bun init` in bun v1.2.22. [Bun](https://bun.com) is a fast all-in-one JavaScript runtime.
+## Usage
+
+```bash
+quizia
+```

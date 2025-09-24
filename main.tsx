@@ -1,6 +1,6 @@
 import BigText from "ink-big-text";
 import Gradient from "ink-gradient";
-import { Quiz } from "./components/quiz";
+import { Quiz } from "./components/quiz.js";
 
 export function App() {
 	return (
