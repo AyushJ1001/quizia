@@ -1,0 +1,102 @@
+[
+	{
+		"question": "In which year did World War I begin?",
+		"choices": {
+			"A": "1912",
+			"B": "1914",
+			"C": "1916",
+			"D": "1918"
+		},
+		"correct": "B"
+	},
+	{
+		"question": "What event is widely considered the immediate trigger for World War I?",
+		"choices": {
+			"A": "The sinking of the Lusitania",
+			"B": "The assassination of Archduke Franz Ferdinand",
+			"C": "The invasion of Poland",
+			"D": "The bombing of Pearl Harbor"
+		},
+		"correct": "B"
+	},
+	{
+		"question": "Which alliance included Germany, Austria-Hungary, and the Ottoman Empire?",
+		"choices": {
+			"A": "The Triple Entente",
+			"B": "The Central Powers",
+			"C": "The Allied Powers",
+			"D": "The League of Nations"
+		},
+		"correct": "B"
+	},
+	{
+		"question": "Who was the British Prime Minister during most of World War I?",
+		"choices": {
+			"A": "Winston Churchill",
+			"B": "David Lloyd George",
+			"C": "H. H. Asquith",
+			"D": "Neville Chamberlain"
+		},
+		"correct": "B"
+	},
+	{
+		"question": "What innovative weapon was first used on a large scale during World War I?",
+		"choices": {
+			"A": "Atomic bomb",
+			"B": "Tank",
+			"C": "Jet fighter",
+			"D": "Missile"
+		},
+		"correct": "B"
+	},
+	{
+		"question": "Which battle is known for its prolonged trench warfare and high casualties, lasting from 1916 to 1917?",
+		"choices": {
+			"A": "Battle of the Somme",
+			"B": "Battle of Verdun",
+			"C": "Battle of Ypres",
+			"D": "Battle of Gallipoli"
+		},
+		"correct": "B"
+	},
+	{
+		"question": "Which country joined the war on the side of the Allies in 1917 after the Zimmermann Telegram?",
+		"choices": {
+			"A": "Japan",
+			"B": "United States",
+			"C": "Italy",
+			"D": "Russia"
+		},
+		"correct": "B"
+	},
+	{
+		"question": "What treaty officially ended World War I?",
+		"choices": {
+			"A": "Treaty of Paris",
+			"B": "Treaty of Versailles",
+			"C": "Treaty of Trianon",
+			"D": "Armistice of Compiègne"
+		},
+		"correct": "B"
+	},
+	{
+		"question": "Which new country was formed from the Austro-Hungarian Empire after World War I?",
+		"choices": {
+			"A": "Poland",
+			"B": "Czechoslovakia",
+			"C": "Hungary",
+			"D": "Yugoslavia"
+		},
+		"correct": "B"
+	},
+	{
+		"question": "What was the primary purpose of the Schlieffen Plan?",
+		"choices": {
+			"A": "To defeat France quickly before turning to Russia",
+			"B": "To invade Britain via naval assault",
+			"C": "To ally with the Ottoman Empire",
+			"D": "To develop chemical weapons"
+		},
+		"correct": "A"
+	}
+]
