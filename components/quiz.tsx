@@ -24,6 +24,7 @@ function Questions({
 	const [questionIdx, setQuestionIdx] = useState(0);
 	const [showAnswer, setShowAnswer] = useState(false);
 	const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+	const isLockedRef = useRef(false);
 
 	useEffect(() => {
 		if (questionIdx >= ww1.length) {
@@ -35,12 +36,13 @@ function Questions({
 		}
 	}, [questionIdx, exit]);
 
-	// Cleanup timeout on unmount or question change
+	// Cleanup timeout on unmount
 	useEffect(
 		() => () => {
 			if (timeoutRef.current) {
 				clearTimeout(timeoutRef.current);
 			}
+			isLockedRef.current = false;
 		},
 		[]
 	);
@@ -103,6 +105,7 @@ function Questions({
 						{question?.question}
 					</Text>
 					<SelectInput
+						key={questionIdx}
 						items={
 							showAnswer
 								? items
@@ -110,13 +113,16 @@ function Questions({
 						}
 						limit={4}
 						itemComponent={CustomItem}
+						isFocused={!showAnswer}
 						onSelect={(item) => {
-							// Guard: return early if answer is already being shown
-							if (showAnswer) {
+							// Immediate re-entrancy guard to prevent double-scoring
+							if (isLockedRef.current) {
 								return;
 							}
 
+							isLockedRef.current = true;
 							setShowAnswer(true);
+
 							if (item.value === correct) {
 								setScore((prev) => prev + 1);
 							}
@@ -129,6 +135,7 @@ function Questions({
 							timeoutRef.current = setTimeout(() => {
 								setQuestionIdx((prev) => prev + 1);
 								setShowAnswer(false);
+								isLockedRef.current = false;
 								timeoutRef.current = null;
 							}, 1000);
 						}}
@@ -155,7 +162,7 @@ export function Quiz() {
 				WW1
 			</Text>
 			<Text italic color="blue">
-				Score: {score}
+				Score: {score}/{ww1.length}
 			</Text>
 			<Questions setScore={setScore} />
 		</Box>
