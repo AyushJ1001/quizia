@@ -51,7 +51,12 @@
 	},
 	"scripts": {
 		"dev": "bun run index.tsx",
-		"build": "bun x tsc -p tsconfig.build.json && mkdir -p dist/data && cp data/*.json dist/data/ && echo '#!/usr/bin/env node' > dist/cli.mjs && cat dist/index.js >> dist/cli.mjs && chmod +x dist/cli.mjs",
+		"build:tsc": "bun x tsc -p tsconfig.build.json",
+		"build:copy-data": "mkdir -p dist/data && cp data/*.json dist/data/",
+		"build:shebang": "echo '#!/usr/bin/env node' > dist/cli.mjs",
+		"build:concat": "cat dist/index.js >> dist/cli.mjs",
+		"build:chmod": "chmod +x dist/cli.mjs",
+		"build": "bun run build:tsc && bun run build:copy-data && bun run build:shebang && bun run build:concat && bun run build:chmod",
 		"prepublishOnly": "bun run build"
 	}
 }
