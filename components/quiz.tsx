@@ -8,6 +8,7 @@ import {
 	type Dispatch,
 	type FC,
 	type SetStateAction,
+	useRef,
 } from "react";
 
 type CustomItemProps = ItemProps & {
@@ -22,7 +23,7 @@ function Questions({
 	const { exit } = useApp();
 	const [questionIdx, setQuestionIdx] = useState(0);
 	const [showAnswer, setShowAnswer] = useState(false);
-	const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | null>(null);
+	const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
 	useEffect(() => {
 		if (questionIdx >= ww1.length) {
@@ -35,13 +36,14 @@ function Questions({
 	}, [questionIdx, exit]);
 
 	// Cleanup timeout on unmount or question change
-	useEffect(() => {
-		return () => {
-			if (timeoutId) {
-				clearTimeout(timeoutId);
+	useEffect(
+		() => () => {
+			if (timeoutRef.current) {
+				clearTimeout(timeoutRef.current);
 			}
-		};
-	}, [timeoutId]);
+		},
+		[]
+	);
 
 	const question = ww1[questionIdx];
 	const correct = question?.correct;
@@ -120,17 +122,15 @@ function Questions({
 							}
 
 							// Clear any existing timeout before setting a new one
-							if (timeoutId) {
-								clearTimeout(timeoutId);
+							if (timeoutRef.current) {
+								clearTimeout(timeoutRef.current);
 							}
 
-							const newTimeoutId = setTimeout(() => {
+							timeoutRef.current = setTimeout(() => {
 								setQuestionIdx((prev) => prev + 1);
 								setShowAnswer(false);
-								setTimeoutId(null);
+								timeoutRef.current = null;
 							}, 1000);
-
-							setTimeoutId(newTimeoutId);
 						}}
 					/>
 				</>

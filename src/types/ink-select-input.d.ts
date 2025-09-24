@@ -1,10 +1,10 @@
 declare module "ink-select-input" {
 	import React, { type FC } from "react";
 
-	export type ItemProps = {
+	export type ItemProps<V = any> = {
 		readonly isSelected?: boolean;
 		readonly label: string;
-	};
+	} & Partial<Item<V>>;
 
 	export type Item<V = any> = {
 		key?: string;
@@ -41,7 +41,7 @@ declare module "ink-select-input" {
 		/**
 		 * Custom component to override the default item component.
 		 */
-		readonly itemComponent?: FC<ItemProps>;
+		readonly itemComponent?: FC<ItemProps<V>>;
 		/**
 		 * Function to call when user selects an item. Item object is passed to that function as an argument.
 		 */
