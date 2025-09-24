@@ -12,7 +12,6 @@
 		"resolveJsonModule": true,
 		"verbatimModuleSyntax": true,
 		"allowImportingTsExtensions": false,
-		"noEmit": false
 	},
 	"include": [
 		"index.tsx",

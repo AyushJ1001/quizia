@@ -22,7 +22,7 @@
 		"terminal"
 	],
 	"engines": {
-		"node": ">=18"
+		"node": ">=20"
 	},
 	"bin": {
 		"quizia": "dist/cli.mjs"
