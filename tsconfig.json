@@ -13,6 +13,11 @@
     "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": true,
     "noEmit": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+
+    // Type definitions
+    "typeRoots": ["./node_modules/@types", "./src/types"],
 
     // Best practices
     "strict": true,
@@ -25,5 +30,9 @@
     "noUnusedLocals": false,
     "noUnusedParameters": false,
     "noPropertyAccessFromIndexSignature": false
-  }
+  },
+  "include": [
+    "./**/*",
+    "./src/types/**/*"
+  ]
 }
